@@ -37,60 +37,86 @@ window.addEventListener('load', () => {
 	const list = document.querySelector("#tasks");
     localStorage.removeItem('debug');
 
+
+    let taskListArray = [];
+    //create list
+    class Task {
+        constructor(key, value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+    for (var i = 0; i<localStorage.length; i++){
+        const localStorageKeyNumber = localStorage.key(i);
+        const task = localStorage.getItem(localStorageKeyNumber);
+
+        const newTask = new Task(localStorageKeyNumber, task);
+        taskListArray.push(newTask);
+    }
+    console.log(taskListArray);
+
     form.addEventListener('submit', (e) => {
     		e.preventDefault();
 
-        const taskAddedToLocalStorage = input.value;
+        const taskAdded = input.value;
         const keyValue = Math.floor(Math.random() * 1000000);
-        localStorage.setItem(keyValue, taskAddedToLocalStorage);
+        localStorage.setItem(keyValue, taskAdded);
         location.reload();
     })
 
     for (var i = 0; i<localStorage.length; i++){
-            const localStorageKeyNumber = localStorage.key(i);
-            const task = localStorage.getItem(localStorageKeyNumber);
+        const localStorageKeyNumber = localStorage.key(i);
+        const task = localStorage.getItem(localStorageKeyNumber);
 
-    		const aTask = document.createElement('div');
-    		aTask.classList.add('task');
+        const aTask = document.createElement('div');
+        aTask.classList.add('task');
 
-    		const taskList = document.createElement('div');
-    		taskList.classList.add('content');
+        const taskList = document.createElement('div');
+        taskList.classList.add('content');
+        aTask.appendChild(taskList);
 
-    		aTask.appendChild(taskList);
+        const taskInput = document.createElement('div');
+        taskInput.classList.add('text');
+        taskInput.innerHTML = task;
+        taskList.appendChild(taskInput);
 
-    		const taskInput = document.createElement('div');
-    		taskInput.classList.add('text');
-    		taskInput.innerHTML = task;
+        const taskActions = document.createElement('div');
+        taskActions.classList.add('actions');
 
+    	const deleteTask = document.createElement('button');
+    	deleteTask.classList.add('delete');
+    	deleteTask.innerHTML = '<i class="fa-solid fa-trash"></i>';
+    	taskActions.appendChild(deleteTask);
 
-    		taskList.appendChild(taskInput);
+    	aTask.appendChild(taskActions);
 
-    		const taskActions = document.createElement('div');
-    		taskActions.classList.add('actions');
+    	list.appendChild(aTask);
 
-    		const deleteTask = document.createElement('button');
-    		deleteTask.classList.add('delete');
-    		deleteTask.innerHTML = '<i class="fa-solid fa-trash"></i>';
+    	input.value = '';
 
-    		taskActions.appendChild(deleteTask);
+    	deleteTask.addEventListener('click', (e) => {
+    		list.removeChild(aTask);
+    		localStorage.removeItem(localStorageKeyNumber);
 
-    		aTask.appendChild(taskActions);
+               var index = taskListArray.map(function(e) { return e.key; }).indexOf(localStorageKeyNumber);
+    		console.log(index);
 
-    		list.appendChild(aTask);
-
-    		input.value = '';
-
-    		deleteTask.addEventListener('click', (e) => {
-    			list.removeChild(aTask);
-    			localStorage.removeItem(localStorageKeyNumber);
-    		});
+    		location.reload();
+    	});
     }
 
-	const clearButton = document.querySelector("#clear-button");
-    clearButton.addEventListener("click", (e) => {
-        window.localStorage.clear();
-        location.reload();
-    })
+	const clearTask = document.querySelector("#clear-button");
+	if(taskListArray.length > 0){
+	    const clearButton = document.createElement('button');
+	    clearButton.classList.add('clear-button');
+	    clearButton.innerHTML = 'Clear List';
+	    clearTask.appendChild(clearButton);
+
+        clearButton.addEventListener("click", (e) => {
+            window.localStorage.clear();
+            location.reload();
+        })
+    }
 })
 
 function myFunction() {

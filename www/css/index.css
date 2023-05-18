@@ -167,7 +167,7 @@ h2 {
 	font-size: 1.75rem;
 }
 
-#clear-button {
+.clear-button {
     display: flex;
     margin-left: 180px;
     font-size: 1.5rem;

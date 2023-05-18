@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List App</title>
+
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="https://kit.fontawesome.com/6bf3f44209.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="topnav">
+    <a href="index.html">To-Do List App</a>
+    <!-- nav links -->
+    <div id="myLinks">
+        <a href="index.html">Home</a>
+        <a href="todolist.html">To-Do List</a>
+        <a href="about.html">About</a>
+    </div>
+    <!-- hamburger menu -->
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+<header>
+    <h1>Things To Do</h1>
+    <form id="new-task-form">
+        <input type="text" name="new-task-input" id="new-task-input"
+               placeholder="What do you need to do?" />
+        <button type="submit" id="new-task-button">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+    </form>
+</header>
+<main>
+    <section class="task-list">
+        <h2>Tasks</h2>
+        <div id="tasks">
+
+        </div>
+    </section>
+
+    <button type="submit" id="clear-button">Clear List</button>
+</main>
+<script src="js/index.js"></script>
+</body>
+</html>

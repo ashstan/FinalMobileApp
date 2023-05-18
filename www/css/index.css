@@ -1,0 +1,172 @@
+* {
+	margin: 0;
+	font-family: "Andale Mono", monospace;
+}
+
+/* shows nav links when hamburger menu is clicked */
+.topnav {
+  overflow: hidden;
+  background-color: #ed5f7b;
+  position: relative;
+  padding: 1.25em;
+}
+/* hides links in nav menu */
+.topnav #myLinks {
+  display: none;
+}
+/* navigation links text: color, size, etc */
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 35px;
+  display: block;
+}
+/* hambuger menu icon */
+.topnav a.icon {
+  background: #ed5f7b;
+  color: white;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 65px;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+}
+
+header {
+	padding: 2rem 1rem;
+	max-width: 500px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+#title {
+	font-size: 4rem;
+	font-weight: 300;
+	color: black;
+}
+
+header h1{
+	font-size: 3rem;
+	font-weight: 300;
+	color: black;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+#new-task-form {
+	display: flex;
+}
+
+input, button {
+    border-radius: 15px;
+    padding-right: 5px
+    padding-left: 5px;
+	background: none;
+}
+
+#to-do-list-button {
+    border-radius: 20px;
+    font-size: 26px;
+    margin-top: 40px;
+    width: 300px;
+    height: 50px;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+}
+
+#new-task-input {
+	flex: 1 1 0%;
+	display: flex;
+	padding-right: 1rem;
+	padding-left: 1rem;
+	margin-right: 1rem;
+	margin-top: 1rem;
+	border-radius: 1rem;
+	color: black;
+	font-size: 1.75rem;
+}
+/*add task button*/
+#new-task-button {
+	font-size: 2rem;
+	color: #ed5f7b;
+	padding-right: 10px;
+	padding-left: 10px;
+	margin-top: 15px;
+	border: none;
+}
+
+
+main {
+	flex: 1 1 0%;
+	max-width: 500px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.task-list {
+	padding: 1rem;
+}
+
+h2 {
+	font-weight: bold;
+	padding-bottom: 10px;
+	font-size: 35px;
+}
+/* task buttons */
+#tasks .task {
+	display: flex;
+	padding: 0;
+	margin-left: 1rem;
+	border: none;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+.task .content .text {
+	color: black;
+	font-size: 1.5rem;
+	width: 100%;
+	display: block;
+	border: none;
+	margin-right: 150px;
+	min-width: 275px;
+    max-width: 275px;
+}
+
+.task .actions {
+    display: flex;
+    align-items: center;
+}
+
+.task .actions button {
+	margin: 0 0.5rem;
+	font-size: 1.125rem;
+}
+
+.task .actions .delete {
+	color: #ed5f7b;
+	border: none;
+	text-align: left;
+}
+
+#clear-button {
+    display: flex;
+    margin-left: 350px;
+    font-size: 22px;
+}
